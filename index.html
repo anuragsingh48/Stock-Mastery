@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market Course</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Learn Stock Market from Basics to Advanced</h1>
+        <p>Enroll in our comprehensive course for just ₹3000!</p>
+    </header>
+    
+    <section id="about">
+        <h2>About the Course</h2>
+        <p>This course covers everything from stock market basics to advanced trading strategies. Perfect for beginners and seasoned traders alike.</p>
+    </section>
+    
+    <section id="enroll">
+        <h2>Enroll Now</h2>
+        <button id="payButton">Pay Now</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Your Course Name. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('payButton').onclick = function(e) {
+            e.preventDefault();
+            var options = {
+                "key": "YOUR_KEY_ID", // Replace with your Razorpay Key ID
+                "amount": 300000, // Amount is in paise (₹3000 = 300000)
+                "currency": "INR",
+                "name": "Your Course Name",
+                "description": "Stock Market Course",
+                "image": "YOUR_LOGO_URL", // Optional: URL of your logo
+                "handler": function (response) {
+                    alert("Payment successful! Transaction ID: " + response.razorpay_payment_id);
+                    // Implement further logic (e.g., save payment details)
+                },
+                "prefill": {
+                    "name": "",
+                    "email": "",
+                    "contact": ""
+                },
+                "theme": {
+                    "color": "#3399cc"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+            e.preventDefault();
+        }
+    </script>
+</body>
+</html>
